@@ -1,9 +1,8 @@
 const express = require('express');
-const { 
-    JogoController, 
-    JogadorController, 
-    MapaController 
-} = require('../controllers');
+
+const JogoController = require('../controllers/JogoController');
+const JogadorController = require('../controllers/JogadorController');
+const MapaController = require('../controllers/MapaController');
 
 const router = express.Router();
 const jogoController = new JogoController();
