@@ -3,22 +3,27 @@ class MapaController {
         this.mapa = mapa;
     }
 
-    obterInformacoesCasa(posicao) {
-        const casa = this.mapa.obterCasa(posicao);
-        return {
-            tipo: casa.tipo,
-            cidade: casa.cidade ? {
-                nome: casa.cidade.nome,
-                proprietario: casa.cidade.proprietario?.nome || 'Disponível',
-                valorCompra: casa.cidade.valorCompra,
-                valorAluguel: casa.cidade.valorAluguel
-            } : null
-        };
+    listarCidades() {
+        return this.mapa.obterTodasCidades().map(casa => ({
+            nome: casa.nome,
+            valorCompra: casa.cidade.valorCompra,
+            valorAluguel: casa.cidade.valorAluguel,
+            proprietario: casa.cidade.proprietario?.nome || 'Disponível'
+        }));
+    }
+
+    detalhesCidade(nomeCidade) {
+        const cidade = this.mapa.obterTodasCidades()
+            .find(casa => casa.nome === nomeCidade);
+        
+        return cidade ? {
+            nome: cidade.nome,
+            tipo: cidade.tipo,
+            valorCompra: cidade.cidade.valorCompra,
+            valorAluguel: cidade.cidade.valorAluguel,
+            coordenadas: cidade.coordenadas
+        } : null;
     }
 }
 
-module.exports = {
-    JogoController,
-    JogadorController,
-    MapaController
-};
+module.exports = { Mapa, MapaController };
