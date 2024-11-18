@@ -1,3 +1,5 @@
+const { Mapa } = require('../models/Mapa');
+
 class MapaController {
     constructor(mapa) {
         this.mapa = mapa;
