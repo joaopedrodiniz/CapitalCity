@@ -34,3 +34,5 @@ class JogoController {
         };
     }
 }
+
+module.exports = JogoController;
