@@ -29,3 +29,5 @@ class Mapa {
         return this.casas.filter(casa => casa.tipo === 'Cidade');
     }
 }
+
+module.exports = Mapa
