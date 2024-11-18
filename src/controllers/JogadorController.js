@@ -19,3 +19,5 @@ class JogadorController {
         return false;
     }
 }
+
+module.exports = JogadorController;
