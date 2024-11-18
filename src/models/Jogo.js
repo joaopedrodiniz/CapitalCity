@@ -1,3 +1,7 @@
+const Mapa = require('./Mapa');
+const Jogador = require('./Jogador');
+const Cidade = require('./Cidade')
+
 class Jogo {
     constructor(jogadores) {
         this.id = Date.now() + Math.random();
@@ -8,7 +12,6 @@ class Jogo {
     }
 
     iniciarJogo() {
-        // Configurações iniciais
         this.rodada = 1;
     }
 
@@ -18,14 +21,12 @@ class Jogo {
         jogadorAtual.mover(valorDado);
 
         const casaAtual = this.mapa.obterCasa(jogadorAtual.posicaoAtual);
-        
         if (casaAtual.tipo === 'Cidade' && casaAtual.cidade.proprietario === null) {
-            // Lógica de compra de cidade
             jogadorAtual.comprarCidade(casaAtual.cidade);
         }
 
         this.jogadorAtual = (this.jogadorAtual + 1) % this.jogadores.length;
-        
+
         if (this.jogadorAtual === 0) {
             this.rodada++;
         }

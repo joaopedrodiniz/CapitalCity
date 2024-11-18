@@ -63,3 +63,5 @@ class RegrasDaPartida {
         };
     }
 }
+
+module.exports = RegrasDaPartida;

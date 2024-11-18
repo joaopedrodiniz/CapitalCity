@@ -26,29 +26,6 @@ class Jogador {
         }
         return false;
     }
-
-    pagarAluguel(valor) {
-        if (this.dinheiro >= valor) {
-            this.dinheiro -= valor;
-            return true;
-        }
-        return this.venderPropriedadesParaPagar(valor);
-    }
-
-    venderPropriedadesParaPagar(valorDevido) {
-        const propriedadesOrdenadas = this.propriedades
-            .sort((a, b) => a.valorCompra - b.valorCompra);
-        
-        for (let propriedade of propriedadesOrdenadas) {
-            this.dinheiro += propriedade.valorCompra;
-            this.propriedades = this.propriedades.filter(p => p !== propriedade);
-            
-            if (this.dinheiro >= valorDevido) {
-                return true;
-            }
-        }
-
-        this.falido = true;
-        return false;
-    }
 }
+
+module.exports = Jogador;
