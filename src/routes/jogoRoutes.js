@@ -66,6 +66,12 @@ router.get('/casa/:posicao', (req, res) => {
     }
 });
 
+router.get('/cidades', (req, res) => {
+    const mapaController = new MapaController(jogo.mapa);
+    const cidades = mapaController.listarCidades();
+    res.json(cidades);
+});
+
 // Pagar aluguel
 router.post('/pagar-aluguel', (req, res) => {
     try {
